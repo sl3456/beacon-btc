@@ -4,12 +4,12 @@ const ITEMS = [
   {
     icon: TrendingUp,
     title: "买涨",
-    body: "你觉得接下来会涨，就按现价买入。真涨了赚钱，跌了会亏。",
+    body: "你觉得接下来会涨，就按提示的挂单价买，等价格回来成交。真涨了赚钱，跌了会亏。",
   },
   {
     icon: TrendingDown,
     title: "买跌",
-    body: "你觉得接下来会跌，就按现价卖出（先借来卖）。真跌了赚钱，涨了会亏。",
+    body: "你觉得接下来会跌，就按提示的挂单价卖（先借来卖）。真跌了赚钱，涨了会亏。",
   },
   {
     icon: Shield,
@@ -37,7 +37,7 @@ export function BeginnerGuide() {
         ))}
       </div>
       <p className="mt-5 text-xs leading-relaxed text-subtle">
-        这是学习工具，不是投资建议。数字货币波动很大，短时间也可能亏很多。上面的提示大约十次能对五到六次，不是保证。
+        这是学习工具，不是投资建议。数字货币波动很大，短时间也可能亏很多。上面的提示大约十次能对七次，不是保证。
       </p>
     </section>
   );
