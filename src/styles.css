@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0c0d0e;
+  --color-foreground: #ececea;
+  --color-card: #141516;
+  --color-card-2: #1a1b1d;
+  --color-muted: #1e1f21;
+  --color-muted-foreground: #8b8c8a;
+  --color-subtle: #6a6b69;
+  --color-border: #262728;
+  --color-accent: #d4d6d2;
+  --color-accent-foreground: #0c0d0e;
+  --color-up: #e4453a;
+  --color-up-dim: #3c1c1a;
+  --color-down: #2aa872;
+  --color-down-dim: #163528;
+  --color-ring: #c8ccd4;
+  --color-live: #c8ccd0;
+
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.07);
+  --shadow-card-hover: 0 0 0 1px rgba(255, 255, 255, 0.12);
+
+  --text-display: clamp(2.25rem, 1.4rem + 4vw, 4.25rem);
+  --text-title: clamp(1.05rem, 0.95rem + 0.6vw, 1.25rem);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-quick: 150ms;
+  --duration-fast: 250ms;
+  --scale-96: 96%;
+}
+
+:root {
+  --motion-micro: 80ms;
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --motion-slow: 400ms;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@keyframes pulse-live {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.72);
+  }
+}
+
+@keyframes flash-up {
+  0% {
+    color: var(--color-up);
+  }
+  100% {
+    color: var(--color-foreground);
+  }
+}
+
+@keyframes flash-down {
+  0% {
+    color: var(--color-down);
+  }
+  100% {
+    color: var(--color-foreground);
+  }
+}
+
+.flash-up {
+  animation: flash-up var(--motion-slow) var(--ease-out);
+}
+
+.flash-down {
+  animation: flash-down var(--motion-slow) var(--ease-out);
+}
+
+.live-dot {
+  animation: pulse-live 1.6s var(--ease-out) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flash-up,
+  .flash-down,
+  .live-dot {
+    animation: none;
+  }
+}
