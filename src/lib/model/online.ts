@@ -13,6 +13,14 @@ function clipW(w: number[]) {
   return w.map((v) => Math.min(1.6, Math.max(-1.6, v)));
 }
 
+function elastic(w: number[], frozen: number[]) {
+  return w.map((v, i) => {
+    const f = frozen[i] ?? 0;
+    const x = 0.97 * v + 0.03 * f;
+    return Math.min(f + 0.08, Math.max(f - 0.08, x));
+  });
+}
+
 /** Train only on filled sim trades. Keep the update if it does not explode. */
 export function growFitTrades(
   candles: Candle[],
@@ -22,7 +30,9 @@ export function growFitTrades(
   trades: SimTrade[],
 ): LiveRules {
   const closed = dropForming(candles, 300);
-  const cur: LiveRules = live ? { ...live, w: live.w.slice() } : frozenLive();
+  const frozen = frozenLive();
+  const cur: LiveRules = live ? { ...live, w: live.w.slice() } : frozen;
+  if (cur.w.length !== frozen.w.length) cur.w = frozen.w.slice();
   const filled = trades.filter((t) => t.filled);
   if (!recipe.train || filled.length < 4) {
     return { ...cur, updatedAt: Date.now() };
@@ -62,7 +72,7 @@ export function growFitTrades(
     }
   }
   return {
-    w: clipW(w),
+    w: elastic(clipW(w), frozen.w),
     enter: recipe.enter,
     hangDeadDelta: recipe.hangDeadDelta,
     hangK: cur.hangK,
