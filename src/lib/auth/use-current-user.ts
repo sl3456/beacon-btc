@@ -1,10 +1,12 @@
 import { authClient, authEnabled } from "./client";
 
+/** Normalized user shape used across the app, auth on or off. */
 export type AppUser = {
   id: string;
   displayName: string | null;
   primaryEmail: string | null;
   profileImageUrl: string | null;
+  /** True when this is the sandbox/dev fallback (auth not configured). */
   isDevFallback: boolean;
 };
 
