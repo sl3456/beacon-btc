@@ -22,9 +22,21 @@
     "threshold": 0.1
   },
   "months": [
-    { "month": "2026-06", "n": 344, "acc": 0.5407 },
-    { "month": "2026-07", "n": 744, "acc": 0.5067 },
-    { "month": "2026-08", "n": 585, "acc": 0.5402 }
+    {
+      "month": "2026-06",
+      "n": 344,
+      "acc": 0.5407
+    },
+    {
+      "month": "2026-07",
+      "n": 744,
+      "acc": 0.5067
+    },
+    {
+      "month": "2026-08",
+      "n": 585,
+      "acc": 0.5402
+    }
   ],
   "notes": [
     "Clean path uses candles[0..i] at decision i; label is close[i+H].",
