@@ -1,0 +1,57 @@
+{
+  "name": "beacon-s",
+  "type": "logistic5-schmitt",
+  "version": 13,
+  "pair": "BTC-USD",
+  "trainedAt": "2026-08-25",
+  "granularity": "5m",
+  "horizonBars": 2,
+  "minBars": 40,
+  "threshold": 0.01,
+  "strategy": "nested BN 60/40 embargo12, h2 tight l2=0.18 d0.0 e0.51, all-BN refit, CB frozen",
+  "samples": 32793,
+  "metrics": {
+    "oosMedian": 0.7189,
+    "oosMin": 0.7118,
+    "folds": [0.7582, 0.7195, 0.7184, 0.7118],
+    "foldN": [579, 467, 490, 451],
+    "holdMin": [20.0, 25.0, 25.0, 20.0],
+    "usable": true,
+    "venue": "nested Binance.US 5m, Coinbase 5m frozen swing",
+    "enter": 0.51,
+    "persistBars": 1,
+    "prevMin": 0.7052,
+    "decay": 0.0,
+    "l2": 0.18
+  },
+  "rules": {
+    "kind": "logistic",
+    "htfGate": false,
+    "volMin": null,
+    "confCut": 0.01,
+    "mode": "schmitt",
+    "enter": 0.51,
+    "persistBars": 1,
+    "hangK": 0.18,
+    "hangDead": 0.25,
+    "tpK": 0.9,
+    "slK": 1.1,
+    "keys": ["rsi", "pos", "bb", "ret1", "vwap_dev", "atrn", "stoch", "mr", "clv"],
+    "mean": [50.208298, 0.509409, 0.00381, 5e-06, 0.000104, 0.001218, 0.50749, 0.086223, 0.003251],
+    "std": [16.820515, 0.308288, 0.680874, 0.001352, 0.006864, 0.000852, 0.320383, 0.09612, 0.845145],
+    "w": [-0.035746, -0.017242, -0.016393, -0.013404, -0.020461, -0.031986, 0.014274, -0.023474, 0.011508, -0.030857]
+  },
+  "reflect": {
+    "window": 16,
+    "cut": 0.48,
+    "minN": 6,
+    "enabled": true,
+    "mode": "warn"
+  },
+  "primary": {
+    "rsiLo": 35,
+    "rsiHi": 65,
+    "posLo": 0.5,
+    "posHi": 0.5
+  }
+}
