@@ -1,0 +1,34 @@
+{
+  "evaluatedAt": "2026-08-25T12:47:15Z",
+  "environment": "standalone process, frozen weights, re-fetched candles, closed bars only",
+  "clean": {
+    "n": 1673,
+    "acc": 0.5254,
+    "accNonOverlap": 0.537,
+    "brier": 0.2525,
+    "gatedAcc": 0.5688,
+    "gatedN": 661,
+    "upRate": 0.5236,
+    "threshold": 0.1
+  },
+  "leakedControl": {
+    "n": 1673,
+    "acc": 0.41,
+    "accNonOverlap": 0.4177,
+    "brier": 0.2792,
+    "gatedAcc": 0.3148,
+    "gatedN": 540,
+    "upRate": 0.5236,
+    "threshold": 0.1
+  },
+  "months": [
+    { "month": "2026-06", "n": 344, "acc": 0.5407 },
+    { "month": "2026-07", "n": 744, "acc": 0.5067 },
+    { "month": "2026-08", "n": 585, "acc": 0.5402 }
+  ],
+  "notes": [
+    "Clean path uses candles[0..i] at decision i; label is close[i+H].",
+    "Leaked control lets the range window see bars i+1..i+H.",
+    "Non-overlap accuracy steps by horizon to reduce dependent labels."
+  ]
+}
